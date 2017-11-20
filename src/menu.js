@@ -13,15 +13,15 @@ const menus = [
         routes: [
           {
             path: '/catalogo/habitaciones/list',
-            title: 'list cat!',
+            title: 'list Hab!',
           },
           {
             path: '/catalogo/habitaciones/new',
-            title: 'new cat!',
+            title: 'new Hab!',
           },
           {
             path: '/catalogo/habitaciones/edit/:id',
-            title: 'edit cat!',
+            title: 'edit Hab!',
           }
         ]
 

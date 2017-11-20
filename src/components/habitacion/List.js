@@ -1,7 +1,17 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import Card, { CardHeader, CardContent } from 'material-ui/Card'
+import Avatar from 'material-ui/Avatar'
+import Typography from 'material-ui/Typography'
+import TextField from 'material-ui/TextField';
+import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
+import Paper from 'material-ui/Paper';
+
 import { connect } from 'react-redux'
 import { getList, del } from '../../actions/habitacion-action'
+
+import Button from 'material-ui/Button';
+import AddIcon from 'material-ui-icons/Add';
 import {
     Link
 } from 'react-router-dom'
@@ -30,37 +40,83 @@ class List extends Component {
     }
 
     render() {
-        
+
         let { list, del } = this.props
         if (list === null) {
             list = []
         }
         return (
-            <div>
-                <h2>Categoria List</h2>
-                <label>Buscar:
-            <input type="text"
-                        value={this.state.q}
-                        onChange={this.handleInputChange}
-                        name="q" />
-                </label>
-                <Link to="/catalogo/habitaciones/new">New Categoria</Link>
-                <table>
-                    <tbody>
-                        {list.map((d, i) => (
-                            <tr key={i}>
-                                <td>{i + 8}</td>
-                                <td> {d.numero} - {d.piso} - {d.precioDiario}- {d.tipoHabitacion}- {d.caracteristicas}- {d.descripcion}</td>
-                                <td><Link to={`/catalogo/habitaciones/edit/${d.id}`}>Edit</Link>
-                                </td>
-                                <td>
-                                    <button onClick={() => del(d.id)} > X </button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+            <Card>
+                <CardHeader
+                    avatar={
+                        <Avatar aria-label="Recipe" >
+                            R
+                      </Avatar>
+                    }
+                    title="User List"
+                    subheader="Users list"
+                />
+
+                <CardContent>
+                    <Typography component="p">
+                        q={this.props.q}
+                    </Typography>
+
+                    <TextField
+                        id="search"
+                        label="Search"
+                        value={this.props.q}
+                        onChange={this.change}
+                        margin="normal"
+                    />
+
+                    <Button fab color="primary" aria-label="add" onClick={this.handleClick}>
+                        <AddIcon />
+                    </Button>
+
+                    <Paper style={{
+                        overflowX: 'auto',
+                    }}>
+                        <Table>
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>#</TableCell>
+                                    <TableCell >Numero</TableCell>
+                                    <TableCell >Piso</TableCell>
+                                    <TableCell >Precio</TableCell>
+                                    <TableCell >Tipo Habitacion</TableCell>
+                                    <TableCell >Caracteristicas</TableCell>
+                                    <TableCell >Descripcion</TableCell>
+                                    <TableCell >Edit</TableCell>
+                                    <TableCell >Delete</TableCell>
+                                </TableRow>
+                            </TableHead>
+
+                            <TableBody>
+                                {list.map((d, index) =>
+                                    <TableRow key={index}>
+                                        <TableCell numeric>{index + 1}</TableCell>
+                                        <TableCell >{d.numero}</TableCell>
+                                        <TableCell >{d.piso}</TableCell>
+                                        <TableCell >{d.precioDiario}</TableCell>
+                                        <TableCell >{d.tipoHabitacion}</TableCell>
+                                        <TableCell >{d.caracteristicas}</TableCell>
+                                        <TableCell >{d.descripcion}</TableCell>
+                                        <TableCell >
+                                            <Link to={`/catalogo/habitaciones/edit/${d.id}`}>Edit</Link>
+                                        </TableCell>
+                                        <TableCell >
+                                            <Button onClick={() => del(d.id)} > X </Button>
+                                        </TableCell>
+                                    </TableRow>
+                                )}
+                            </TableBody>
+                        </Table>
+                    </Paper>
+                </CardContent>
+
+            </Card>
+
         )
     }
 }
