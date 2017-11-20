@@ -28,6 +28,14 @@ class List extends Component {
     componentWillMount() {
         this.props.getList(this.state.q)
     }
+    change = (e) => {
+        const q = e.target.value
+        console.log("q:" + q)
+        this.props.getList(q)
+    }
+    handleClick = () => {
+        this.props.history.push('/catalogo/habitaciones/new');
+    }
     handleInputChange = event => {
         const target = event.target
         const value = target.type === 'checkbox' ? target.checked : target.value
