@@ -106,8 +106,8 @@ class List extends Component {
                                         <TableCell numeric>{index + 1}</TableCell>
                                         <TableCell >{d.numero}</TableCell>
                                         <TableCell >{d.piso}</TableCell>
-                                        <TableCell >{d.precioDiario}</TableCell>
-                                        <TableCell >{d.tipoHabitacion}</TableCell>
+                                        <TableCell >{d.precio_diario}</TableCell>
+                                        <TableCell >{d.tipo_habitacion}</TableCell>
                                         <TableCell >{d.caracteristicas}</TableCell>
                                         <TableCell >{d.descripcion}</TableCell>
                                         <TableCell >

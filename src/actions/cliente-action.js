@@ -1,17 +1,17 @@
 import client from './'
 
-const url = "/api-hotel/habitaciones/"
-export const HABITACION_LIST = "HABITACION_LIST"
-export const habitacionList = (list) => (
+const url = "/api-hotel/cliente/"
+export const CLIENTE_LIST = "CLIENTE_LIST"
+export const clienteList = (list) => (
     {
-        type: HABITACION_LIST,
+        type: CLIENTE_LIST,
         list
     }
 )
 
-export const HABITACION_LIST_FAILURE = 'HABITACION_LIST_FAILURE'
-export const habitacionListFailure = error => ({
-    type: HABITACION_LIST_FAILURE,
+export const CLIENTE_LIST_FAILURE = 'CLIENTE_LIST_FAILURE'
+export const clienteListFailure = error => ({
+    type: CLIENTE_LIST_FAILURE,
     error
 })
 
@@ -23,19 +23,19 @@ export const getList = (q = '') => {
     }
     return (dispatch) => {
         client.get(url, params).then(r => {
-            dispatch(habitacionList(r.data))
+            dispatch(clienteList(r.data))
         }).catch(error => {
             //throw (error)
             //console.log('getList catch:' + JSON.stringify(error.response))
             if (error.response) {
-                dispatch(habitacionListFailure(error.response.data.detail))
+                dispatch(clienteListFailure(error.response.data.detail))
             } else if (error.request) {
                 console.log(error.request);
-                dispatch(habitacionListFailure(JSON.stringify('Error ' + error.request)))
+                dispatch(clienteListFailure(JSON.stringify('Error ' + error.request)))
             } else {
                 // Something happened in setting up the request that triggered an Error
                 console.log('Error', error.message);
-                dispatch(habitacionListFailure('Error ' + error.message))
+                dispatch(clienteListFailure('Error ' + error.message))
             }
             //console.log(error.config);
 
@@ -44,10 +44,10 @@ export const getList = (q = '') => {
 }
 
 
-export const HABITACION_ADD = "HABITACION_ADD"
-export const habitacionAdd = () => (
+export const CLIENTE_ADD = "CLIENTE_ADD"
+export const clienteAdd = () => (
     {
-        type: HABITACION_ADD,
+        type: CLIENTE_ADD,
     }
 )
 export const save = (d, h) => {
@@ -55,7 +55,7 @@ export const save = (d, h) => {
         return new Promise((resolve, reject) => {
             try {
                 client.post(url, d).then(r => {
-                    dispatch(habitacionAdd())
+                    dispatch(clienteAdd())
                     resolve(h)
                 })
             } catch (err) {
@@ -73,10 +73,10 @@ export const getById = (id) => {
         })
     }
 }
-export const HABITACION_UPDATE = "HABITACION_UPDATE"
-export const habitacionUpdate = () => (
+export const CLIENTE_UPDATE = "CLIENTE_UPDATE"
+export const clienteUpdate = () => (
     {
-        type: HABITACION_UPDATE,
+        type: CLIENTE_UPDATE,
     }
 )
 export const update = (d, h) => {
@@ -84,7 +84,7 @@ export const update = (d, h) => {
         return new Promise((resolve, reject) => {
             try {
                 client.put(`${url}${d.id}/`, d).then(r => {
-                    dispatch(habitacionUpdate())
+                    dispatch(clienteUpdate())
                     resolve(h)
                 })
             } catch (err) {
@@ -94,10 +94,10 @@ export const update = (d, h) => {
     }
 }
 
-export const HABITACION_DELETE = "HABITACION_DELETE"
-export const habitacionDelete = (data) => (
+export const CLIENTE_DELETE = "CLIENTE_DELETE"
+export const clienteDelete = (data) => (
     {
-        type: HABITACION_DELETE,
+        type: CLIENTE_DELETE,
         data
     }
 )
@@ -107,7 +107,7 @@ export const del = (id) => {
         return new Promise((resolve, reject) => {
             try {
                 client.delete(`${url}${id}`).then(r => {
-                    dispatch(habitacionDelete(id))
+                    dispatch(clienteDelete(id))
                     resolve(r)
                 })
             } catch (err) {
