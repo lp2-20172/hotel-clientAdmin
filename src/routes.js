@@ -5,6 +5,8 @@ import HabitacionList from './components/habitacion/List'
 import HabitacionForm from './components/habitacion/Form'
 import ClienteList from './components/cliente/List'
 import ClienteForm from './components/cliente/Form'
+import AreaList from './components/area/List'
+import AreaForm from './components/area/Form'
 
 import { RouteWithSubRoutes } from './node_m/react-router-dom-ext'
 
@@ -68,6 +70,28 @@ const routes = [
             path: '/catalogo/clientes/edit/:id',
             //title: 'edit cat!',
             component: ClienteForm
+          }
+        ]
+      },
+      {
+        path: '/catalogo/areas',
+        //title: 'categorias!',
+        component: Tacos,
+        routes: [
+          {
+            path: '/catalogo/areas/list',
+            //title: 'list cat!',
+            component: AreaList
+          },
+          {
+            path: '/catalogo/areas/new',
+            //title: 'new cat!',
+            component: AreaForm
+          },
+          {
+            path: '/catalogo/areas/edit/:id',
+            //title: 'edit cat!',
+            component: AreaForm
           }
         ]
       }

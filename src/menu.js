@@ -48,6 +48,27 @@ const menus = [
 
       },
       {
+        path: '/catalogo/areas',
+        title: 'areas!',
+        replace: '/catalogo/areas/list',
+        icon: 'usb',
+        routes: [
+          {
+            path: '/catalogo/areas/list',
+            title: 'list Hab!',
+          },
+          {
+            path: '/catalogo/areas/new',
+            title: 'new Hab!',
+          },
+          {
+            path: '/catalogo/areas/edit/:id',
+            title: 'edit Hab!',
+          }
+        ]
+
+      },
+      {
         path: '/catalogo/autors',
         title: 'autors!',
         replace: '/catalogo/autors/list',
