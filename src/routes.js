@@ -7,6 +7,8 @@ import ClienteList from './components/cliente/List'
 import ClienteForm from './components/cliente/Form'
 import AreaList from './components/area/List'
 import AreaForm from './components/area/Form'
+import PagoList from './components/pago/List'
+import PagoForm from './components/pago/Form'
 
 import { RouteWithSubRoutes } from './node_m/react-router-dom-ext'
 
@@ -92,6 +94,28 @@ const routes = [
             path: '/catalogo/areas/edit/:id',
             //title: 'edit cat!',
             component: AreaForm
+          }
+        ]
+      },
+      {
+        path: '/catalogo/pagos',
+        //title: 'categorias!',
+        component: Tacos,
+        routes: [
+          {
+            path: '/catalogo/pagos/list',
+            //title: 'list cat!',
+            component: PagoList
+          },
+          {
+            path: '/catalogo/pagos/new',
+            //title: 'new cat!',
+            component: PagoForm
+          },
+          {
+            path: '/catalogo/pagos/edit/:id',
+            //title: 'edit cat!',
+            component: PagoForm
           }
         ]
       }

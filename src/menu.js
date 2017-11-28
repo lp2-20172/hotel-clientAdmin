@@ -69,6 +69,27 @@ const menus = [
 
       },
       {
+        path: '/catalogo/pagos',
+        title: 'pagos!',
+        replace: '/catalogo/pagos/list',
+        icon: 'usb',
+        routes: [
+          {
+            path: '/catalogo/pagos/list',
+            title: 'list Hab!',
+          },
+          {
+            path: '/catalogo/pagos/new',
+            title: 'new Hab!',
+          },
+          {
+            path: '/catalogo/pagos/edit/:id',
+            title: 'edit Hab!',
+          }
+        ]
+
+      },
+      {
         path: '/catalogo/autors',
         title: 'autors!',
         replace: '/catalogo/autors/list',
