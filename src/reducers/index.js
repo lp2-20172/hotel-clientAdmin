@@ -1,6 +1,7 @@
 import {combineReducers} from 'redux'
 
 import habitacion from './habitacion-reducer'
+import person from './person-reducer'
 import cliente from './cliente-reducer'
 import area from './area-reducer'
 import detalleVenta from './detalle-venta-reducer'
@@ -19,7 +20,8 @@ let reducer = combineReducers({
     reserva: reserva,
     trabajador: trabajador,
     venta: venta,
-    detalleVenta: detalleVenta
+    detalleVenta: detalleVenta,
+    person: person
 })
 
-export default reducer               
+export default reducer

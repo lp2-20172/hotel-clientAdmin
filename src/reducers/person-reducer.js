@@ -1,9 +1,9 @@
 import {
-    AREA_LIST,
-    AREA_LIST_FAILURE,
-    AREA_ADD, AREA_UPDATE,
-    AREA_DELETE
-} from '../actions/area-action'
+    PERSON_LIST,
+    PERSON_LIST_FAILURE,
+    PERSON_ADD, PERSON_UPDATE,
+    PERSON_DELETE
+} from '../actions/person-action'
 //import { CATEGORIA_FETCH,  } from '../actions/categoria-action'
 
 const initialState = {
@@ -12,20 +12,20 @@ const initialState = {
     error: null
 }
 
-const areaReducer = (state = initialState, action) => {
+const personReducer = (state = initialState, action) => {
     switch (action.type) {
-        case AREA_LIST:
+        case PERSON_LIST:
             return {
                 ...state,
                 list: action.list,
                 error: null
             }
-        case AREA_LIST_FAILURE: return {
+        case PERSON_LIST_FAILURE: return {
             ...state,
             list: [],
             error: action.error,
         }
-        case AREA_ADD:
+        case PERSON_ADD:
             return {
                 ...state,
             }
@@ -35,11 +35,11 @@ const areaReducer = (state = initialState, action) => {
             ...state,
             data: action.data
         }*/
-        case AREA_UPDATE:
+        case PERSON_UPDATE:
             return {
                 ...state,
             }
-        case AREA_DELETE:
+        case PERSON_DELETE:
             const id = action.data
             return {
                 ...state,
@@ -49,4 +49,4 @@ const areaReducer = (state = initialState, action) => {
             return state;
     }
 }
-export default areaReducer
+export default personReducer
