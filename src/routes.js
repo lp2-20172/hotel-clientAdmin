@@ -11,6 +11,9 @@ import PagoList from './components/pago/List'
 import PagoForm from './components/pago/Form'
 import TrabajadorList from './components/trabajador/List'
 import TrabajadorForm from './components/trabajador/Form'
+import VentaList from './components/venta/List'
+import VentaForm from './components/venta/Form'
+
 import { RouteWithSubRoutes } from './node_m/react-router-dom-ext'
 
 ////
@@ -139,6 +142,28 @@ const routes = [
             path: '/catalogo/trabajadores/edit/:id',
             //title: 'edit cat!',
             component: TrabajadorForm
+          }
+        ]
+      },
+      {
+        path: '/catalogo/ventas',
+        //title: 'categorias!',
+        component: Tacos,
+        routes: [
+          {
+            path: '/catalogo/ventas/list',
+            //title: 'list cat!',
+            component: VentaList
+          },
+          {
+            path: '/catalogo/ventas/new',
+            //title: 'new cat!',
+            component: VentaForm
+          },
+          {
+            path: '/catalogo/ventas/edit/:id',
+            //title: 'edit cat!',
+            component: VentaForm
           }
         ]
       }

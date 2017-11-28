@@ -111,6 +111,27 @@ const menus = [
 
       },
       {
+        path: '/catalogo/ventas',
+        title: 'ventas!',
+        replace: '/catalogo/ventas/list',
+        icon: 'usb',
+        routes: [
+          {
+            path: '/catalogo/ventas/list',
+            title: 'list Hab!',
+          },
+          {
+            path: '/catalogo/ventas/new',
+            title: 'new Hab!',
+          },
+          {
+            path: '/catalogo/ventas/edit/:id',
+            title: 'edit Hab!',
+          }
+        ]
+
+      },
+      {
         path: '/catalogo/autors',
         title: 'autors!',
         replace: '/catalogo/autors/list',
