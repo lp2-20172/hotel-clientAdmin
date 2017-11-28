@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { Button, FormGroup, Label, Input, FormText } from 'reactstrap';
 import { connect } from 'react-redux'
 import { save, getById, update } from '../../actions/venta-action'
+import { getList as getClienteList } from '../../actions/cliente-action'
 
 class Form extends Component {
     constructor(props) {
@@ -14,7 +16,7 @@ class Form extends Component {
             serie: props.data ? props.data.serie : '',
             numero_reservacion: props.data ? props.data.numero_reservacion : '',
             vendedor: props.data ? props.data.vendedor : '',
-            cliente: props.data ? props.data.cliente : '',
+            cliente: props.data ? props.data.cliente : false,
             doc_type: props.data ? props.data.doc_type : '',
         }/*
         this.state = {
@@ -22,6 +24,9 @@ class Form extends Component {
             codigo:'',
             nombre: ''
         }*/
+    }
+    componentWillMount = () => {
+        this.props.getClienteList("")
     }
 
     componentDidMount() {
@@ -76,6 +81,7 @@ class Form extends Component {
     render() {
         //console.log(JSON.stringify(this.props))
         //const { list } = this.props
+        let { cliente_list } = this.props
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
@@ -115,19 +121,26 @@ class Form extends Component {
                             onChange={this.handleInputChange}
                             name="vendedor" />
                     </label><br />
-                    <label>Cliente:
-            <input type="text"
-                            value={this.state.cliente}
-                            onChange={this.handleInputChange}
-                            name="cliente" />
-                    </label><br />
+                    <div>Cliente:</div>
+                    <Input type="select"
+                        value={this.state.cliente}
+                        name="cliente"
+                        required="required"
+                        onChange={this.handleInputChange}z
+                    >
+
+                        {cliente_list.map((c, index) =>
+                            <option key={index}
+                                value={c.id}>{c.nombre} {c.apellido_paterno}</option>
+                        )}
+                    </Input><br />
                     <label>Tipo de Documento:
             <input type="text"
                             value={this.state.doc_type}
                             onChange={this.handleInputChange}
                             name="doc_type" />
                     </label><br />
-                    <input type="submit" value="Enviar"/>
+                    <input type="submit" value="Submit"/>
                 </form>
 
             </div>
@@ -135,22 +148,26 @@ class Form extends Component {
     }
 }
 Form.propTypes = {
-    data: PropTypes.object
+    data: PropTypes.object,
+    cliente_list: PropTypes.array,
 }
 
 const mapStateToProps = (state, props) => {
     if (props.match.params.id) {
         return {
-            data: state.venta.list.find(item => item.id + '' === props.match.params.id + '')
+            data: state.venta.list.find(item => item.id + '' === props.match.params.id + ''),
+            cliente_list: state.cliente.list,
         }
     }
     return {
-        data: null
+        data: null,
+        cliente_list: state.cliente.list,
     }
 
 }
 export default connect(mapStateToProps, {
     save,
     getById,
-    update
+    update,
+    getClienteList,
 })(Form)
