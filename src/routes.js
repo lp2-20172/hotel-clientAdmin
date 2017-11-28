@@ -3,6 +3,8 @@ import React from 'react'
 
 import HabitacionList from './components/habitacion/List'
 import HabitacionForm from './components/habitacion/Form'
+import ClienteList from './components/cliente/List'
+import ClienteForm from './components/cliente/Form'
 
 import { RouteWithSubRoutes } from './node_m/react-router-dom-ext'
 
@@ -44,6 +46,28 @@ const routes = [
             path: '/catalogo/habitaciones/edit/:id',
             //title: 'edit cat!',
             component: HabitacionForm
+          }
+        ]
+      },
+      {
+        path: '/catalogo/clientes',
+        //title: 'categorias!',
+        component: Tacos,
+        routes: [
+          {
+            path: '/catalogo/clientes/list',
+            //title: 'list cat!',
+            component: ClienteList
+          },
+          {
+            path: '/catalogo/clientes/new',
+            //title: 'new cat!',
+            component: ClienteForm
+          },
+          {
+            path: '/catalogo/clientes/edit/:id',
+            //title: 'edit cat!',
+            component: ClienteForm
           }
         ]
       }
@@ -98,25 +122,25 @@ class Tacos2x extends React.Component {
     //console.log(JSON.stringify(routes[0].path))
     //history.push('/categorias/list/list');
     //console.log(JSON.stringify(this.state.redirect))
-    
+
        // if (this.state.redirect) {
-    
+
          // this.props.history.push('/categorias/list/list')
-    
-        //} 
-    
+
+        //}
+
     return (
       <div>
         {routes.map((route, i) => (
           <RouteWithSubRoutes key={i} {...route} />
         ))}
-        
+
         <button onClick={this.handleClick}>
                         Volver
                     </button>
       </div>
     )
-    
+
   }
 
 }
@@ -126,7 +150,7 @@ const Tacos2p = ({ routes }) => (
     {routes.map((route, i) => (
       <RouteWithSubRoutes key={i} {...route} />
     ))}
-    
+
 
   </div>
 )

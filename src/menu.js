@@ -27,6 +27,27 @@ const menus = [
 
       },
       {
+        path: '/catalogo/clientes',
+        title: 'clientes!',
+        replace: '/catalogo/clientes/list',
+        icon: 'usb',
+        routes: [
+          {
+            path: '/catalogo/clientes/list',
+            title: 'list Hab!',
+          },
+          {
+            path: '/catalogo/clientes/new',
+            title: 'new Hab!',
+          },
+          {
+            path: '/catalogo/clientes/edit/:id',
+            title: 'edit Hab!',
+          }
+        ]
+
+      },
+      {
         path: '/catalogo/autors',
         title: 'autors!',
         replace: '/catalogo/autors/list',
