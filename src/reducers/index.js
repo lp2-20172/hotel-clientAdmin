@@ -6,6 +6,7 @@ import area from './area-reducer'
 import detalleVenta from './detalle-venta-reducer'
 import pago from './pago-reducer'
 import reserva from './reserva-reducer'
+import trabajador from './trabajador-reducer'
 import theme from './theme-reducer'
 
 let reducer = combineReducers({
@@ -15,6 +16,7 @@ let reducer = combineReducers({
     area: area,
     pago: pago,
     reserva: reserva,
+    trabajador: trabajador,
     detalleVenta: detalleVenta
 })
 
