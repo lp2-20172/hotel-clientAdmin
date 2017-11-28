@@ -10,8 +10,8 @@ class Form extends Component {
             id: props.data ? props.data.id : null,
             numero: props.data ? props.data.numero : '',
             piso: props.data ? props.data.piso : '',
-            precioDiario: props.data ? props.data.precioDiario : '',
-            tipoHabitacion: props.data ? props.data.tipoHabitacion : '',
+            precio_diario: props.data ? props.data.precio_diario : '',
+            tipo_habitacion: props.data ? props.data.tipo_habitacion : '',
             caracteristicas: props.data ? props.data.caracteristicas : '',
             descripcion: props.data ? props.data.descripcion : ''
         }/*
@@ -30,8 +30,8 @@ class Form extends Component {
                     id: data.id,
                     numero: data.numero,
                     piso: data.piso,
-                    precioDiario: data.precioDiario,
-                    tipoHabitacion: data.tipoHabitacion,
+                    precio_diario: data.precio_diario,
+                    tipo_habitacion: data.tipo_habitacion,
                     caracteristicas: data.caracteristicas,
                     descripcion: data.descripcion,
                 });
@@ -91,13 +91,13 @@ class Form extends Component {
             <input type="text"
                             value={this.state.precioDiario}
                             onChange={this.handleInputChange}
-                            name="precioDiario" />
+                            name="precio_diario" />
                     </label><br />
                     <label>Tipo:
             <input type="text"
                             value={this.state.tipoHabitacion}
                             onChange={this.handleInputChange}
-                            name="tipoHabitacion" />
+                            name="tipo_habitacion" />
                     </label><br />
                     <label>Descripcion:
             <input type="text"
