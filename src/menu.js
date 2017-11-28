@@ -90,6 +90,27 @@ const menus = [
 
       },
       {
+        path: '/catalogo/trabajadores',
+        title: 'trabajadores!',
+        replace: '/catalogo/trabajadores/list',
+        icon: 'usb',
+        routes: [
+          {
+            path: '/catalogo/trabajadores/list',
+            title: 'list Hab!',
+          },
+          {
+            path: '/catalogo/trabajadores/new',
+            title: 'new Hab!',
+          },
+          {
+            path: '/catalogo/trabajadores/edit/:id',
+            title: 'edit Hab!',
+          }
+        ]
+
+      },
+      {
         path: '/catalogo/autors',
         title: 'autors!',
         replace: '/catalogo/autors/list',
