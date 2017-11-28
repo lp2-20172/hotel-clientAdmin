@@ -7,6 +7,7 @@ import detalleVenta from './detalle-venta-reducer'
 import pago from './pago-reducer'
 import reserva from './reserva-reducer'
 import trabajador from './trabajador-reducer'
+import venta from './venta-reducer'
 import theme from './theme-reducer'
 
 let reducer = combineReducers({
@@ -17,6 +18,7 @@ let reducer = combineReducers({
     pago: pago,
     reserva: reserva,
     trabajador: trabajador,
+    venta: venta,
     detalleVenta: detalleVenta
 })
 
