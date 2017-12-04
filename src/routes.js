@@ -13,6 +13,8 @@ import TrabajadorList from './components/trabajador/List'
 import TrabajadorForm from './components/trabajador/Form'
 import VentaList from './components/venta/List'
 import VentaForm from './components/venta/Form'
+import ReservaList from './components/reserva/List'
+import ReservaForm from './components/reserva/Form'
 
 import { RouteWithSubRoutes } from './node_m/react-router-dom-ext'
 
@@ -164,6 +166,28 @@ const routes = [
             path: '/catalogo/ventas/edit/:id',
             //title: 'edit cat!',
             component: VentaForm
+          }
+        ]
+      },
+      {
+        path: '/catalogo/reservas',
+        //title: 'categorias!',
+        component: Tacos,
+        routes: [
+          {
+            path: '/catalogo/reservas/list',
+            //title: 'list cat!',
+            component: ReservaList
+          },
+          {
+            path: '/catalogo/reservas/new',
+            //title: 'new cat!',
+            component: ReservaForm
+          },
+          {
+            path: '/catalogo/reservas/edit/:id',
+            //title: 'edit cat!',
+            component: ReservaForm
           }
         ]
       }

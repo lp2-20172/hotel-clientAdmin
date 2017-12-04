@@ -132,6 +132,27 @@ const menus = [
 
       },
       {
+        path: '/catalogo/reservas',
+        title: 'Reservas!',
+        replace: '/catalogo/reservas/list',
+        icon: 'usb',
+        routes: [
+          {
+            path: '/catalogo/reservas/list',
+            title: 'list Hab!',
+          },
+          {
+            path: '/catalogo/reservas/new',
+            title: 'new Hab!',
+          },
+          {
+            path: '/catalogo/reservas/edit/:id',
+            title: 'edit Hab!',
+          }
+        ]
+
+      },
+      {
         path: '/catalogo/autors',
         title: 'autors!',
         replace: '/catalogo/autors/list',
