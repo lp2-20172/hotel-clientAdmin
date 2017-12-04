@@ -1,13 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { Button, FormGroup, Label, Input, FormText } from 'reactstrap';
 import { connect } from 'react-redux'
 import { save, getById, update } from '../../actions/reserva-action'
 import { getList as getClienteList } from '../../actions/cliente-action'
-
-
-import { withStyles } from 'material-ui/styles';
-import MenuItem from 'material-ui/Menu/MenuItem';
-import TextField from 'material-ui/TextField';
 
 import DateTime from 'react-datetime'
 import DatetimeRangePicker from 'react-datetime-range-picker';
@@ -46,7 +42,7 @@ class Form extends Component {
                     cliente: data.cliente,
                     fecha_ingresa: data.fecha_ingresa,
                     f: moment(data.fecha_ingresa, 'YYYY-MM-DD hh:mm A'),
-
+                    
                 });
             });
         }
@@ -114,34 +110,22 @@ class Form extends Component {
                             onChange={this.handleChangedate}
                         />
                     </label><br />
-                    <TextField
+                    <div>Cliente:</div>
+                    <Input type="select"
                         value={this.state.cliente}
-                        select
-                        label="Selecciona una cliente"
                         name="cliente"
                         required="required"
-                        onChange={this.handleInputChange}
-                        SelectProps={{
-                            native: true,
-
-                        }}
-                        helperText="Please select your currency"
-                        margin="normal"
+                        onChange={this.handleInputChange} z
                     >
-                        <option value="">
-                            Seleccione una opcion
-                         </option>
+
                         {cliente_list.map((c, index) =>
                             <option key={index}
                                 value={c.id}>{c.nombre} {c.apellido_paterno}</option>
                         )}
-                    </TextField>
-
-                    <div>Cliente:</div>
-
+                    </Input><br />
+                    
                     <input type="submit" value="Submit" />
                 </form>
-
 
             </div>
         )
