@@ -13,6 +13,7 @@ import DateTime from 'react-datetime'
 import DatetimeRangePicker from 'react-datetime-range-picker';
 
 import moment from 'moment';
+import 'moment/locale/es';
 
 class Form extends Component {
     constructor(props) {
@@ -21,9 +22,11 @@ class Form extends Component {
             id: props.data ? props.data.id : null,
             costo_alogamiento: props.data ? props.data.costo_alogamiento : '',
             tipo_reserva: props.data ? props.data.tipo_reserva : '',
-            cliente: props.data ? props.data.cliente : false,
-            fecha_ingresa: props.data ? props.data.fecha_ingresa : '',
-            f: props.data ? moment(props.data.fecha_ingresa, 'YYYY-MM-DD hh:mm A') : moment().format('YYYY-MM-DD hh:mm A')
+            cliente: props.data ? props.data.cliente : '',
+            estado: props.data ? props.data.estado : false,
+            //fecha_ingresa: props.data ? props.data.fecha_ingresa : '',
+            //f: props.data ? moment(props.data.fecha_ingresa, 'YYYY-MM-DD hh:mm A') : moment().format('YYYY-MM-DD hh:mm A')
+
         }/*
         this.state = {
             id:  null,
@@ -44,8 +47,9 @@ class Form extends Component {
                     costo_alogamiento: data.costo_alogamiento,
                     tipo_reserva: data.tipo_reserva,
                     cliente: data.cliente,
-                    fecha_ingresa: data.fecha_ingresa,
-                    f: moment(data.fecha_ingresa, 'YYYY-MM-DD hh:mm A'),
+                    estado: data.estado,
+                    //fecha_ingresa: data.fecha_ingresa,
+                    //f: moment(data.fecha_ingresa, 'YYYY-MM-DD hh:mm A'),
 
                 });
             });
@@ -62,9 +66,9 @@ class Form extends Component {
         })
 
     }
-    handleChangedate = (newDate) => {
+   /* handleChangedate = (newDate) => {
         return this.setState({ f: newDate });
-    }
+    }*/
 
     handleSubmit = event => {
         event.preventDefault()
@@ -91,57 +95,60 @@ class Form extends Component {
         //const { list } = this.props
         let { cliente_list } = this.props
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <label>Costo:
-            <input type="text"
-                            value={this.state.costo_alogamiento}
+            <div >
+                <div >
+                    <form onSubmit={this.handleSubmit}>
+                        <input type="text" className="form2" placeholder="Costo"
+                            value={this.state.costo_alojamiento}
                             onChange={this.handleInputChange}
-                            name="costo_alogamiento" />
-                    </label><br />
-                    <label>Tipo Reserva:
-            <input type="text"
+                            name="costo_alojamiento" />
+                        <input type="text" className="form2" placeholder="Tipo Reserva"
                             value={this.state.tipo_reserva}
                             onChange={this.handleInputChange}
                             name="tipo_reserva" />
-                    </label><br />
-                    <label>Fecha Ingresa:
-                    <DateTime
+                        <div>Cliente</div>
+                        <label>Fecha Ingreso</label>
+                        <DateTime
                             dateTime={this.state.f}
                             format="YYYY-MM-DD hh:mm A"
                             name="f"
                             inputFormat="YYYY-MM-DD hh:mm A"
                             onChange={this.handleChangedate}
                         />
-                    </label><br />
-                    <TextField
-                        value={this.state.cliente}
-                        select
-                        label="Selecciona una cliente"
-                        name="cliente"
-                        required="required"
-                        onChange={this.handleInputChange}
-                        SelectProps={{
-                            native: true,
+                        <TextField
+                            value={this.state.cliente}
+                            select
+                            label="Selecciona una cliente"
+                            name="cliente"
+                            required="required"
+                            onChange={this.handleInputChange}
+                            SelectProps={{
+                                native: true,
 
-                        }}
-                        helperText="Please select your currency"
-                        margin="normal"
-                    >
-                        <option value="">
-                            Seleccione una opcion
-                         </option>
-                        {cliente_list.map((c, index) =>
-                            <option key={index}
-                                value={c.id}>{c.nombre} {c.apellido_paterno}</option>
-                        )}
-                    </TextField>
+                            }}
+                            helperText="Please select your currency"
+                            margin="normal"
+                        >
+                            <option value="">
+                                Seleccione una opcion
+                     </option>
+                            {cliente_list.map((c, index) =>
+                                <option key={index}
+                                    value={c.id}>{c.nombre} {c.apellido_paterno}</option>
+                            )}
+                        </TextField>
+                        <input
+                            className="form2"
+                            type="checkbox"
+                            value={this.state.estado}
+                            name="estado"
+                            onChange={this.handleInputChange} />
 
-                    <div>Cliente:</div>
+                        <input type="submit" className="form2btn" value="Reservar" />
 
-                    <input type="submit" value="Submit" />
-                </form>
+                    </form>
 
+                </div>
 
             </div>
         )
